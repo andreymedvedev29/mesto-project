@@ -1,0 +1,6 @@
+.elements__group-icon_activ {
+    background-image: url(../../../../images/black-heart.svg);
+}
+.elements__group-icon_activ:hover {
+    opacity: 1;
+}

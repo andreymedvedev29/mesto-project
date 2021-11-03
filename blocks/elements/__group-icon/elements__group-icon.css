@@ -1,0 +1,14 @@
+.elements__group-icon {
+    width: 22.5px;
+    height: 19px;
+    border: 0;
+    cursor: pointer;
+    padding: 0;
+    margin: 5px 30px 0 0;
+    transition: opacity .4s;
+    background-image: url(../../../images/heart.svg);
+    background-color: rgb(255, 255, 255, 0);
+}
+.elements__group-icon:hover {
+    opacity: 0.5;
+}

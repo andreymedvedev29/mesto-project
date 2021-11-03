@@ -1,0 +1,11 @@
+.elements__element {
+    font-size: 0;
+    border-radius: 10px 10px 10px 10px;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+@media screen and  (max-width: 767px){
+    .elements__element {
+        margin-bottom: 0;    
+    }
+}

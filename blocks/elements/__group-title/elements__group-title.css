@@ -1,0 +1,14 @@
+.elements__group-title {
+    width: 217px;
+    color: black;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 29px;
+    letter-spacing: 0em;
+    margin: 0 0 -7px 21px;
+    display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
