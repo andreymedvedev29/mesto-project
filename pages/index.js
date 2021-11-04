@@ -22,8 +22,25 @@ closeButtonPlace.addEventListener('click', function () {
   popupPlace.classList.remove('popup_opened');
 });
 
+/*редактируем профилт, отправляем форму*/
+let saveButton = popup.querySelector('.popup__button');
+let profileTitle = document.querySelector('.profile__title');
+let profileSubtitle = document.querySelector('.profile__subtitle');
+let popupContainer = popup.querySelector('.popup__container');
+let nameInput = document.getElementById('name');
+let jobInput = document.getElementById('prof');
 
-
+function formSubmitHandler (evt) {
+  evt.preventDefault(); 
+  let nameValue = nameInput.value;
+  let jobValue = jobInput.value;
+  profileTitle.textContent = nameValue;
+  profileSubtitle.textContent = jobValue;
+}
+popupContainer.addEventListener('submit', formSubmitHandler); 
+saveButton.addEventListener('click', function () {
+  popup.classList.remove('popup_opened');
+});
 
 
 
