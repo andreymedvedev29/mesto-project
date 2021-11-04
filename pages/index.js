@@ -21,7 +21,7 @@ let closeButtonPlace = popupPlace.querySelector('.popup__close-button');
 closeButtonPlace.addEventListener('click', function () {
   popupPlace.classList.remove('popup_opened');
 });
-  
+
 
 
 

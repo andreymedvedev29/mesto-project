@@ -7,6 +7,7 @@
 * CSS 
 * Flex
 * GRID
+* Javascript
 
 ### Как открыть/закрыть
 
