@@ -25,49 +25,7 @@
                 <button type="button" class="profile__add-button"><img src="./images/plus.svg" alt="Лого"></button>
             </section>
             <section class="elements">
-                <div class="elements__element">
-                    <img class="elements__image" src="./images/kirill-pershin-1.jpg" alt="Замок"/>
-                    <div class="elements__group">
-                        <h2 class="elements__group-title" >Карачаевск</h2>
-                        <!-- Что бы иконка "сердце" стало активным, добавьте модификатор elements__group-icon_activ-->
-                        <button type="button" class="elements__group-icon"></button>    
-                    </div>
-                </div>
-                <div class="elements__element">
-                    <img class="elements__image" src="./images/kirill-pershin-2.jpg" alt="Рассвет"/>
-                    <div class="elements__group">
-                        <h2 class="elements__group-title" >Гора Эльбрус</h2>
-                        <button type="button" class="elements__group-icon"></button>
-                    </div>
-                </div>
-                <div class="elements__element">
-                    <img class="elements__image" src="./images/kirill-pershin-3.jpg" alt="Горы"/>
-                    <div class="elements__group">
-                        <h2 class="elements__group-title" >Домбай</h2>
-                        <button type="button" class="elements__group-icon"></button>
-                    </div>
-                </div>
-                <div class="elements__element">
-                    <img class="elements__image" src="./images/kirill-pershin-2.jpg" alt="Рассвет"/>
-                    <div class="elements__group">
-                        <h2 class="elements__group-title" >Гора Эльбрус</h2>
-                        <button type="button" class="elements__group-icon"></button>
-                    </div>
-                </div>
-                <div class="elements__element">
-                    <img class="elements__image" src="./images/kirill-pershin-3.jpg" alt="Горы"/>
-                    <div class="elements__group">
-                        <h2 class="elements__group-title" >Домбай</h2>
-                        <button type="button" class="elements__group-icon"></button>
-                    </div>
-                </div>
-                <div class="elements__element">
-                    <img class="elements__image" src="./images/kirill-pershin-1.jpg" alt="Замок"/>
-                    <div class="elements__group">
-                        <h2 class="elements__group-title" >Карачаево-Черкессия</h2>
-                        <button type="button" class="elements__group-icon"></button>
-                    </div>
-                </div>    
+   
             </section>
         </main>
         <footer class="footer">
@@ -94,12 +52,21 @@
                     <fieldset class="popup__contact">
                         <input type="text" class="popup__item" id="name" name="name" placeholder="Название" value="Название" required>
                         <input type="text" class="popup__item" id="prof" name="prof" placeholder="Ссылка на картинку" value="Ссылка на картинку" required>
-                        <button type="submit" class="popup__button">Сохранить</button>
+                        <button type="submit" class="popup-place__button">Сохранить</button>
                     </fieldset>
                 </form> 
             </div>
         </div>
     </div>
+    <template id="place-template">
+        <div class="elements__element">
+            <img class="elements__image" src="" alt=""/>
+            <div class="elements__group">
+                <h2 class="elements__group-title" ></h2>
+                <button type="button" class="elements__group-icon"></button>
+            </div>
+        </div>
+    </template>
     <script src="./pages/index.js"></script>   
 </body>
 </html>
