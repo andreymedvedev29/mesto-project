@@ -1,5 +1,6 @@
 let popup = document.querySelector('.popup');
 let popupPlace = document.querySelector('.popup-place');
+let popupImg = document.querySelector('.popup-img');
 let profile = document.querySelector('.profile');
 
 //функции открытия/закрытия попапов
@@ -7,7 +8,7 @@ function openPopup(popupElement) {
   popupElement.classList.add('popup_opened');
 };
 function closePopup(popupElement) {
-  popupElement.remove('popup_opened');
+  popupElement.classList.remove('popup_opened');
 };
 //открываем/закрываем форму профиля
 let editButton = profile.querySelector('.profile__edit-button');
@@ -27,7 +28,7 @@ let popupContainer = popup.querySelector('.popup__container');
 let nameInput = document.getElementById('name');
 let jobInput = document.getElementById('prof');
 
-function formSubmitHandler (evt) {
+function formSubmitHandler(evt) {
   evt.preventDefault(); 
   let nameValue = nameInput.value;
   let jobValue = jobInput.value;
@@ -36,13 +37,13 @@ function formSubmitHandler (evt) {
 }
 popupContainer.addEventListener('submit', formSubmitHandler); 
 saveButton.addEventListener('click', function () {
-  popup.classList.remove('popup_opened');
+  closePopup(popup);
 });
 
 /*открываем/закрываем форму нового места*/
 let addButton = profile.querySelector('.profile__add-button');
 let closeButtonPlace = popupPlace.querySelector('.popup__close-button');
-addButton.addEventListener('click', function () {
+addButton.addEventListener('click', function () {  
   openPopup(popupPlace);
 });
 closeButtonPlace.addEventListener('click', function () {
@@ -85,7 +86,6 @@ let saveButtonplace = document.querySelector('.popup-place__button');//нахо�
 let placeInput = document.getElementById('namePlace');//находим поле ввода названия места
 let linkInput = document.getElementById('linkPlace');// находим поле ввода ссылки
 
-
 //функция создания новой карточки
 function createCard(name, link) {
   const cardTemplate = document.querySelector('#place-template').content;
@@ -104,7 +104,10 @@ function createCard(name, link) {
   cardElement.querySelector('.elements__close-button').addEventListener('click', function () {
     cardElement.remove();
 });
-
+  imageElement.addEventListener('click', function () {
+    console.log(imageElement)
+    openPopup(popupImg);
+});
   return cardElement;
 }
 
@@ -112,14 +115,14 @@ initialCards.forEach((item) => {
   elements.prepend(createCard(item.name, item.link))
 }) 
 
-function formSubmitHandler2 (evt) {
+function formSubmitHandler2(evt) {
   evt.preventDefault(); 
   let placeValue = placeInput.value;
   let linkValue = linkInput.value;
-  cardElement.src = linkValue;
-  cardElement.textContent = linkValue;
+  let cardElement = createCard(placeValue, linkValue);
+  elements.prepend(cardElement);
 }
 popupContainerplace.addEventListener('submit', formSubmitHandler2); 
 saveButtonplace.addEventListener('click', function () {
-  elements.prepend(createCard)
+  closePopup(popupPlace);
 });
