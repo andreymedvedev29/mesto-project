@@ -43,7 +43,7 @@ saveButton.addEventListener('click', function () {
 /*открываем/закрываем форму нового места*/
 let addButton = profile.querySelector('.profile__add-button');
 let closeButtonPlace = popupPlace.querySelector('.popup__close-button');
-addButton.addEventListener('click', function () {  
+addButton.addEventListener('click', function () { 
   openPopup(popupPlace);
 });
 closeButtonPlace.addEventListener('click', function () {
@@ -85,6 +85,7 @@ let popupContainerplace = popupPlace.querySelector('.popup__container-place');//
 let saveButtonplace = document.querySelector('.popup-place__button');//находим кнопку сохранить
 let placeInput = document.getElementById('namePlace');//находим поле ввода названия места
 let linkInput = document.getElementById('linkPlace');// находим поле ввода ссылки
+let closeButtonImg = popupImg.querySelector('.popup__close-button');
 
 //функция создания новой карточки
 function createCard(name, link) {
@@ -105,8 +106,15 @@ function createCard(name, link) {
     cardElement.remove();
 });
   imageElement.addEventListener('click', function () {
-    console.log(imageElement)
+
+    document.querySelector('.popup-img__image').src = link;
+    document.querySelector('.popup-img__image').alt = name;
+    document.querySelector('.popup-img__title').textContent = name;
+    
     openPopup(popupImg);
+    closeButtonImg.addEventListener('click', function () {
+      closePopup(popupImg);
+    });
 });
   return cardElement;
 }
@@ -116,13 +124,13 @@ initialCards.forEach((item) => {
 }) 
 
 function formSubmitHandler2(evt) {
-  evt.preventDefault(); 
+  evt.preventDefault();
   let placeValue = placeInput.value;
   let linkValue = linkInput.value;
   let cardElement = createCard(placeValue, linkValue);
   elements.prepend(cardElement);
 }
-popupContainerplace.addEventListener('submit', formSubmitHandler2); 
+popupContainerplace.addEventListener('submit', formSubmitHandler2);
 saveButtonplace.addEventListener('click', function () {
   closePopup(popupPlace);
 });

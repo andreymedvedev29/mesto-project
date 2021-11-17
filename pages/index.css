@@ -29,6 +29,9 @@
 /*popap*/
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup-place/popup-place.css);
+@import url(../blocks/popup-img/popup-img.css);
+@import url(../blocks/popup-img/__container-img/popup-img__container-img.css);
+@import url(../blocks/popup-img/__image/popup-img__image.css);
 @import url(../blocks/popup-place/__button/popup-place__button.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__container/popup__container.css);
@@ -39,6 +42,6 @@
 @import url(../blocks/popup/__item/popup__item.css);
 @import url(../blocks/popup/__close-icon/popup__close-icon.css);
 @import url(../blocks/popup/__close-button/popup__close-batton.css);
-@import url(../blocks/popup-img/popup-img.css);
-@import url(../blocks/popup/__container-img/popup__container-img.css);
+@import url(../blocks/popup-img/__title/popup-img__title.css);
+
 
