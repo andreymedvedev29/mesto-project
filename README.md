@@ -15,4 +15,4 @@
 
 #### GitHub Pages
 
-https://andrey7529.github.io/meato_project/
+https://andreymedvedev29.github.io/mesto-project/index.html
