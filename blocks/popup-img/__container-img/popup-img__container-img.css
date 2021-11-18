@@ -1,15 +1,6 @@
 .popup-img__container-img {
-    max-width: 75vw;
-    max-height: 75vh;
     background-color: rgba(0, 0, 0, 0);
     margin: auto;
-    position: relative;
     display: flex;
     flex-direction: column;
-}
-@media screen and  (max-width: 767px){
-    .popup-img__container-img {
-        width: 282px;
-        padding: 25px 0 25px;
-    }
 }
