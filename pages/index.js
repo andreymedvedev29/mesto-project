@@ -1,8 +1,8 @@
-const popup = document.querySelector('.popup');//находим попап профиля
+const popup = document.querySelector('.popup');//находим попап
+const popupProfile = document.querySelector('.popup-profile');//находим попап профиля
 const popupPlace = document.querySelector('.popup-place');//находим попап места
 const popupImg = document.querySelector('.popup-img');//находим попап картинки
 const profile = document.querySelector('.profile');//находим профиль
-
 
 function openPopup(popupElement) {             //функции открытия попапов
   popupElement.classList.add('popup_opened');
@@ -13,33 +13,31 @@ function closePopup(popupElement) {            //функции закрытия
 
 
 const editButton = profile.querySelector('.profile__edit-button');//находим кнопку редактирования профиля
-const closeButton = popup.querySelector('.popup__close-button'); //находим кнопку закрытия попапа профиля
+const closeProfileButton = popupProfile.querySelector('.popup__close-button'); //находим кнопку закрытия попапа профиля
 editButton.addEventListener('click', function () {                //на кнопку редактирования профиля вешаем функцию открытия попапа            
-  openPopup(popup);
+  openPopup(popupProfile);
 });
-closeButton.addEventListener('click', function () {               //на кнопку закрытия профиля вешаем функцию закрытия попапа
-  closePopup(popup);
+closeProfileButton.addEventListener('click', function () {               //на кнопку закрытия профиля вешаем функцию закрытия попапа
+  closePopup(popupProfile);
 });
 
 
-const saveButton = popup.querySelector('.popup__button');//находим кнопку сохранения данных профиля
-let profileTitle = profile.querySelector('.profile__title');//находим заголовок профиля
-let profileSubtitle = profile.querySelector('.profile__subtitle');//находим подзаголовок профиля
-const popupContainer = popup.querySelector('.popup__container');//находим форму
+const saveButton = popupProfile.querySelector('.popup__button');//находим кнопку сохранения данных профиля
+const profileTitle = profile.querySelector('.profile__title');//находим заголовок профиля
+const profileSubtitle = profile.querySelector('.profile__subtitle');//находим подзаголовок профиля
+const profileForm = popupProfile.querySelector('.popup__container');//находим форму профиля
 let nameInput = document.getElementById('name');//находим поле ввода имени
 let jobInput = document.getElementById('prof');//находим поле ввода профессии
 
-function formSubmitHandlerProfile(evt) {         //функция отправки формы
+function handleProfileFormSubmit(evt) {         //функция отправки формы
   evt.preventDefault(); 
   let nameValue = nameInput.value;//в переменную сохраняем данные поля ввода имени
   let jobValue = jobInput.value;//в переменную сохраняем данные поля ввода профессии
   profileTitle.textContent = nameValue;//добавляем имя на страницу
   profileSubtitle.textContent = jobValue;//добавляем профессию на страницу
+  closePopup(popupProfile);
 }
-popupContainer.addEventListener('submit', formSubmitHandlerProfile); 
-saveButton.addEventListener('click', function () { //на кнопку "сохранить" вешаем функцию закрытия попапа
-    closePopup(popup);
-});
+profileForm.addEventListener('submit', handleProfileFormSubmit);
 
 
 const addButton = profile.querySelector('.profile__add-button');//находим кнопку открытия попапа место
@@ -81,13 +79,15 @@ const initialCards = [
 ];
 
 const elements = document.querySelector('.elements');//находим контейнер для карточек
+const imgPopupImg = popupImg.querySelector('.popup-img__image');//находим картинку попапа картинки
+const titlePopupImg = popupImg.querySelector('.popup-img__title');//находим название картинки попапа картинки
 
 //форма добавления новой карточки
-const popupContainerplace = popupPlace.querySelector('.popup__container');//находим форму
+const addPlaceForm = popupPlace.querySelector('.popup__container');//находим форму
 const saveButtonPlace = popupPlace.querySelector('.popup__button');//находим кнопку сохранить
 let placeInput = document.getElementById('namePlace');//находим поле ввода названия места
 let linkInput = document.getElementById('linkPlace');// находим поле ввода ссылки
-const closeButtonImg = popupImg.querySelector('.popup-img__close-button');//находим кнопку закрытия попапа картинки
+const closeButtonImg = popupImg.querySelector('.popup__close-button');//находим кнопку закрытия попапа картинки
 
 //функция создания новой карточки
 function createCard(name, link) {
@@ -109,30 +109,30 @@ function createCard(name, link) {
 });
   imageElement.addEventListener('click', function () {//функция открытия попапа с картинкой
 
-    document.querySelector('.popup-img__image').src = link;
-    document.querySelector('.popup-img__image').alt = name;
-    document.querySelector('.popup-img__title').textContent = name;
+    imgPopupImg.src = link;
+    imgPopupImg.alt = name;
+    titlePopupImg.textContent = name;
     
     openPopup(popupImg);
-    closeButtonImg.addEventListener('click', function () {
-      closePopup(popupImg);
-    });
 });
+
   return cardElement;
 }
+
+closeButtonImg.addEventListener('click', function () {
+  closePopup(popupImg);
+});
 
 initialCards.forEach((item) => {//циклом перебираем начальный массив карточек и добавляем их на страницу
   elements.prepend(createCard(item.name, item.link))
 }) 
 
-function formSubmitHandlerPlace(evt) {   //функция отправки формы
+function handlePlaceFormSubmit(evt) {   //функция отправки формы
   evt.preventDefault();
   let placeValue = placeInput.value;
   let linkValue = linkInput.value;
   let cardElement = createCard(placeValue, linkValue);
   elements.prepend(cardElement);
-}
-popupContainerplace.addEventListener('submit', formSubmitHandlerPlace);
-saveButtonPlace.addEventListener('click', function () {//на кнопку "сохранить" вешаем функцию закрытия попапа
   closePopup(popupPlace);
-});
+}
+addPlaceForm.addEventListener('submit', handlePlaceFormSubmit);
