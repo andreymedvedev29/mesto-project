@@ -1,4 +1,3 @@
-const popup = document.querySelector('.popup');//находим попап
 const popupProfile = document.querySelector('.popup-profile');//находим попап профиля
 const popupPlace = document.querySelector('.popup-place');//находим попап места
 const popupImg = document.querySelector('.popup-img');//находим попап картинки
@@ -26,13 +25,13 @@ const saveButton = popupProfile.querySelector('.popup__button');//находим
 const profileTitle = profile.querySelector('.profile__title');//находим заголовок профиля
 const profileSubtitle = profile.querySelector('.profile__subtitle');//находим подзаголовок профиля
 const profileForm = popupProfile.querySelector('.popup__container');//находим форму профиля
-let nameInput = document.getElementById('name');//находим поле ввода имени
-let jobInput = document.getElementById('prof');//находим поле ввода профессии
+const nameInput = document.getElementById('name');//находим поле ввода имени
+const jobInput = document.getElementById('prof');//находим поле ввода профессии
 
 function handleProfileFormSubmit(evt) {         //функция отправки формы
   evt.preventDefault(); 
-  let nameValue = nameInput.value;//в переменную сохраняем данные поля ввода имени
-  let jobValue = jobInput.value;//в переменную сохраняем данные поля ввода профессии
+  const nameValue = nameInput.value;//в переменную сохраняем данные поля ввода имени
+  const jobValue = jobInput.value;//в переменную сохраняем данные поля ввода профессии
   profileTitle.textContent = nameValue;//добавляем имя на страницу
   profileSubtitle.textContent = jobValue;//добавляем профессию на страницу
   closePopup(popupProfile);
@@ -85,8 +84,8 @@ const titlePopupImg = popupImg.querySelector('.popup-img__title');//находи
 //форма добавления новой карточки
 const addPlaceForm = popupPlace.querySelector('.popup__container');//находим форму
 const saveButtonPlace = popupPlace.querySelector('.popup__button');//находим кнопку сохранить
-let placeInput = document.getElementById('namePlace');//находим поле ввода названия места
-let linkInput = document.getElementById('linkPlace');// находим поле ввода ссылки
+const placeInput = document.getElementById('namePlace');//находим поле ввода названия места
+const linkInput = document.getElementById('linkPlace');// находим поле ввода ссылки
 const closeButtonImg = popupImg.querySelector('.popup__close-button');//находим кнопку закрытия попапа картинки
 
 //функция создания новой карточки
@@ -129,9 +128,9 @@ initialCards.forEach((item) => {//циклом перебираем началь
 
 function handlePlaceFormSubmit(evt) {   //функция отправки формы
   evt.preventDefault();
-  let placeValue = placeInput.value;
-  let linkValue = linkInput.value;
-  let cardElement = createCard(placeValue, linkValue);
+  const placeValue = placeInput.value;
+  const linkValue = linkInput.value;
+  const cardElement = createCard(placeValue, linkValue);
   elements.prepend(cardElement);
   closePopup(popupPlace);
 }
