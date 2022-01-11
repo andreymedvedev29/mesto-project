@@ -11,6 +11,19 @@ function closePopup(popupElement) {            //функции закрытия
 };
 
 
+document.addEventListener('keydown', function (evt) {  
+  if ( evt.classList.contains('popup_opened') && evt.key === 'Escape') {
+      closePopup(evt)
+  }
+}); 
+
+document.addEventListener('click', function (evt) {        //закрываем попапы кликом по оверлею
+  if (evt.target.classList.contains('popup_opened')) {
+    closePopup(evt.target)
+  }
+}); 
+
+
 const editButton = profile.querySelector('.profile__edit-button');//находим кнопку редактирования профиля
 const closeProfileButton = popupProfile.querySelector('.popup__close-button'); //находим кнопку закрытия попапа профиля
 editButton.addEventListener('click', function () {                //на кнопку редактирования профиля вешаем функцию открытия попапа            
