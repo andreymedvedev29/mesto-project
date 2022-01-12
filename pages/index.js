@@ -11,9 +11,10 @@ function closePopup(popupElement) {            //функции закрытия
 };
 
 
-document.addEventListener('keydown', function (evt) {  
-  if ( evt.classList.contains('popup_opened') && evt.key === 'Escape') {
-      closePopup(evt)
+document.addEventListener('keydown', function (evt) {       //закрываем попапы клавишей Esc
+  const escButton = document.querySelector('.popup_opened')
+  if (evt.key === 'Escape') {
+      closePopup(escButton)
   }
 }); 
 
