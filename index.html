@@ -35,10 +35,12 @@
             <div class="popup__container">
                 <button class="popup__close-button" type="button"><img class="popup__close-icon" src="./images/CloseIcon.svg" alt="Закрывающий крестик"></button>
                 <h2 class="popup__heading">Редактировать профиль</h2>
-                <form name="profile">
+                <form class="popup__form" name="profile" novalidate>
                     <fieldset class="popup__contact">
-                        <input type="text" class="popup__item" id="name" name="name" placeholder="Имя" value="Жак-Ив Кусто" required>
-                        <input type="text" class="popup__item" id="prof" name="prof" placeholder="О себе" value="Исследователь океана" required>
+                        <input id="name-input" type="text" class="popup__item" name="name" placeholder="Имя" value="Жак-Ив Кусто" minlength="2" maxlength="40" required>
+                        <span class="name-input-error popup__item-error"></span>
+                        <input id="prof-input" type="text" class="popup__item"  name="prof" placeholder="О себе" value="Исследователь океана" minlength="2" maxlength="200" required>
+                        <span class="prof-input-error popup__item-error"></span>
                         <button type="submit" class="popup__button">Сохранить</button>
                     </fieldset>
                 </form> 
@@ -48,10 +50,12 @@
             <div class="popup__container">
                 <button class="popup__close-button" type="button"><img class="popup__close-icon" src="./images/CloseIcon.svg" alt="Закрывающий крестик"></button>
                 <h2 class="popup__heading">Новое место</h2>
-                <form name="profile" id="formPlace">
+                <form class="popup__form" name="profile" id="formPlace" novalidate>
                     <fieldset class="popup__contact">
-                        <input type="text" class="popup__item" id="namePlace" name="name" placeholder="Название" value="" required>
-                        <input type="text" class="popup__item" id="linkPlace" name="prof" placeholder="Ссылка на картинку" value="" required>
+                        <input id="place-input" type="text" class="popup__item"  name="name" placeholder="Название" value="" required>
+                        <span class="place-input-error popup__item-error"></span>
+                        <input id="email-input" type="email" class="popup__item"  name="prof" placeholder="Ссылка на картинку" value="" required>
+                        <span class="email-input-error popup__item-error"></span>
                         <button type="submit" class="popup__button">Сохранить</button>
                     </fieldset>
                 </form> 
