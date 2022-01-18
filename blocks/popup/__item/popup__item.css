@@ -27,7 +27,8 @@
 }
 
 .popup__item_type_error {
-    border-bottom-color: rgb(255, 0, 0);
+    border-bottom-color: #FF0000;
+    ;
    
 }
 
@@ -40,7 +41,7 @@
 }
 
 .popup__item-error_activ {
-    color: rgb(255, 0, 0);
+    color:  #FF0000;
 }
 
 .popup__item-zone {
