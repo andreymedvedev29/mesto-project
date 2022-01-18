@@ -38,9 +38,9 @@
                 <form class="popup__form" name="profile" novalidate>
                     <fieldset class="popup__contact">
                         <input id="name-input" type="text" class="popup__item" name="name" placeholder="Имя" value="Жак-Ив Кусто" minlength="2" maxlength="40" required>
-                        <span class="name-input-error popup__item-error"></span>
+                        <p class="popup__item-zone" ><span class="name-input-error popup__item-error"></span></p>
                         <input id="prof-input" type="text" class="popup__item"  name="prof" placeholder="О себе" value="Исследователь океана" minlength="2" maxlength="200" required>
-                        <span class="prof-input-error popup__item-error"></span>
+                        <p class="popup__item-zone" ><span class="prof-input-error popup__item-error"></span></p>
                         <button type="submit" class="popup__button">Сохранить</button>
                     </fieldset>
                 </form> 
@@ -52,10 +52,10 @@
                 <h2 class="popup__heading">Новое место</h2>
                 <form class="popup__form" name="profile" id="formPlace" novalidate>
                     <fieldset class="popup__contact">
-                        <input id="place-input" type="text" class="popup__item"  name="name" placeholder="Название" value="" required>
-                        <span class="place-input-error popup__item-error"></span>
+                        <input id="place-input" type="text" class="popup__item"  name="name" placeholder="Название" value="" minlength="2" maxlength="30" required>
+                        <p class="popup__item-zone" ><span class="place-input-error popup__item-error"></span></p>
                         <input id="email-input" type="email" class="popup__item"  name="prof" placeholder="Ссылка на картинку" value="" required>
-                        <span class="email-input-error popup__item-error"></span>
+                        <p class="popup__item-zone" ><span class="email-input-error popup__item-error"></span></p>
                         <button type="submit" class="popup__button">Создать</button>
                     </fieldset>
                 </form> 
