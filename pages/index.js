@@ -38,8 +38,8 @@ const saveButton = popupProfile.querySelector('.popup__button');//находим
 const profileTitle = profile.querySelector('.profile__title');//находим заголовок профиля
 const profileSubtitle = profile.querySelector('.profile__subtitle');//находим подзаголовок профиля
 const profileForm = popupProfile.querySelector('.popup__container');//находим форму профиля
-const nameInput = document.getElementById('name');//находим поле ввода имени
-const jobInput = document.getElementById('prof');//находим поле ввода профессии
+const nameInput = document.getElementById('name-input');//находим поле ввода имени
+const jobInput = document.getElementById('prof-input');//находим поле ввода профессии
 
 function handleProfileFormSubmit(evt) {         //функция отправки формы
   evt.preventDefault(); 
@@ -97,8 +97,8 @@ const titlePopupImg = popupImg.querySelector('.popup-img__title');//находи
 //форма добавления новой карточки
 const addPlaceForm = popupPlace.querySelector('.popup__container');//находим форму
 const saveButtonPlace = popupPlace.querySelector('.popup__button');//находим кнопку сохранить
-const placeInput = document.getElementById('namePlace');//находим поле ввода названия места
-const linkInput = document.getElementById('linkPlace');// находим поле ввода ссылки
+const placeInput = document.getElementById('place-input');//находим поле ввода названия места
+const linkInput = document.getElementById('email-input');// находим поле ввода ссылки
 const closeButtonImg = popupImg.querySelector('.popup__close-button');//находим кнопку закрытия попапа картинки
 
 //функция создания новой карточки
