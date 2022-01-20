@@ -1,28 +1,4 @@
-const popupProfile = document.querySelector('.popup-profile');//находим попап профиля
-const popupPlace = document.querySelector('.popup-place');//находим попап места
-const popupImg = document.querySelector('.popup-img');//находим попап картинки
 const profile = document.querySelector('.profile');//находим профиль
-
-function openPopup(popupElement) {             //функции открытия попапов
-  popupElement.classList.add('popup_opened');
-};
-function closePopup(popupElement) {            //функции закрытия попапов
-  popupElement.classList.remove('popup_opened');
-};
-
-document.addEventListener('keydown', function (evt) {       //закрываем попапы клавишей Esc
-  const escButton = document.querySelector('.popup_opened')
-  if (evt.key === 'Escape') {
-      closePopup(escButton)
-  }
-}); 
-
-document.addEventListener('click', function (evt) {        //закрываем попапы кликом по оверлею
-  if (evt.target.classList.contains('popup_opened')) {
-    closePopup(evt.target)
-  }
-}); 
-
 
 const editButton = profile.querySelector('.profile__edit-button');//находим кнопку редактирования профиля
 const closeProfileButton = popupProfile.querySelector('.popup__close-button'); //находим кнопку закрытия попапа профиля
@@ -154,6 +130,10 @@ addPlaceForm.addEventListener('submit', handlePlaceFormSubmit);
 
 import { enableValidation } from './validate.js'
 enableValidation();
+
+import { popupProfile, popupPlace, popupImg, openPopup, closePopup } from './modal.js'
+openPopup();
+closePopup();
 
 
 
