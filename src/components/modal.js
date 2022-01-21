@@ -1,6 +1,6 @@
-export const popupProfile = document.querySelector('.popup-profile');//находим попап профиля
+/*export const popupProfile = document.querySelector('.popup-profile');//находим попап профиля
 export const popupPlace = document.querySelector('.popup-place');//находим попап места
-export const popupImg = document.querySelector('.popup-img');//находим попап картинки
+export const popupImg = document.querySelector('.popup-img');//находим попап картинки*/
 
 export function openPopup(popupElement) {             //функции открытия попапов
   popupElement.classList.add('popup_opened');
