@@ -102,8 +102,7 @@ import { popupProfile,
         } from './data.js'
 
 import {  openPopup, closePopup } from './modal.js'
-openPopup();
-closePopup();
+
 
 import { createCard } from './cards.js'
 createCard();
