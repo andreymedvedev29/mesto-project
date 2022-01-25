@@ -1,34 +1,3 @@
-//начальный массив карточек
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
-initialCards.forEach((item) => {//циклом перебираем начальный массив карточек и добавляем их на страницу
-  elements.prepend(createCard(item.name, item.link))
-}); 
 
 editButton.addEventListener('click', function () {                //на кнопку редактирования профиля вешаем функцию открытия попапа            
   openPopup(popupProfile);
@@ -106,6 +75,12 @@ import {  openPopup, closePopup } from './modal.js'
 
 import { createCard } from './cards.js'
 createCard();
+
+import { userInfo } from './api.js'
+userInfo();
+
+import { getCards } from './api.js'
+getCards();
 
 
 
