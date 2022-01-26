@@ -12,9 +12,17 @@ function handleProfileFormSubmit(evt) {         //функция отправк�
   const jobValue = jobInput.value;//в переменную сохраняем данные поля ввода профессии
   profileTitle.textContent = nameValue;//добавляем имя на страницу
   profileSubtitle.textContent = jobValue;//добавляем профессию на страницу
+  editProfile(nameValue, jobValue);
   closePopup(popupProfile);
 }
 profileForm.addEventListener('submit', handleProfileFormSubmit);
+
+profileAvatar.addEventListener('click', function () {//функция открытия попапа с аватаром
+  openPopup(popupAvatar);
+});
+closeButtonAvatar.addEventListener('click', function () {//на кнопку закрытия аватара вешаем функцию закрытия попапа
+  closePopup(popupAvatar);
+});
 
 addButton.addEventListener('click', function () { //на кнопку открытия попапа место вешаем функцию открытия попапа
   document.getElementById('formPlace').reset();//очищаем форму
@@ -54,6 +62,7 @@ enableValidation({
 import { popupProfile,
          popupPlace,
          popupImg, 
+         popupAvatar,
          editButton, 
          closeProfileButton, 
          profileTitle, 
@@ -67,7 +76,9 @@ import { popupProfile,
          addPlaceForm, 
          placeInput, 
          linkInput, 
-         closeButtonImg
+         closeButtonImg,
+         profileAvatar,
+         closeButtonAvatar
         } from './data.js'
 
 import {  openPopup, closePopup } from './modal.js'
@@ -79,8 +90,10 @@ createCard();
 import { userInfo } from './api.js'
 userInfo();
 
-import { getCards } from './api.js'
+import { getCards, editProfile } from './api.js'
 getCards();
+
+
 
 
 

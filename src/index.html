@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mesto</title>
-    <!--link rel="stylesheet" href="./index.css" /-->
 </head>
 <body class="page">
     <div class="page__container">
@@ -14,10 +13,13 @@
         </header>
         <main>
             <section class="profile">
-                <img class="profile__avatar" src="../src/images/custo.jpg" alt="Кусто"/>
+                <img class="profile__avatar" src="../src/images/custo.jpg" alt="Аватар пользователя"/>
+                <div class="profile__avatar-overlay">
+                    <div href="#" class="profile__avatar-icon"></div>
+                </div>
                 <div class="profile__info">
-                    <h1 class="profile__title">Жак-Ив Кусто</h1>    
-                    <p class="profile__subtitle">Исследователь океана</p>
+                    <h1 class="profile__title"></h1>    
+                    <p class="profile__subtitle"></p>
                     <button type="button" class="profile__edit-button">
                         <img class="profile__info-logo" src="../src/images/info-logo.svg" alt="Лого">
                     </button>
@@ -37,10 +39,23 @@
                 <h2 class="popup__heading">Редактировать профиль</h2>
                 <form class="popup__form" name="profile" novalidate>
                     <fieldset class="popup__contact">
-                        <input id="name-input" type="text" class="popup__item" name="name" placeholder="Имя" value="Жак-Ив Кусто" minlength="2" maxlength="40" required>
+                        <input id="name-input" type="text" class="popup__item" name="name" placeholder="Имя" value="" minlength="2" maxlength="40" required>
                         <p class="popup__item-zone" ><span class="name-input-error popup__item-error"></span></p>
-                        <input id="prof-input" type="text" class="popup__item"  name="prof" placeholder="О себе" value="Исследователь океана" minlength="2" maxlength="200" required>
+                        <input id="prof-input" type="text" class="popup__item"  name="prof" placeholder="О себе" value="" minlength="2" maxlength="200" required>
                         <p class="popup__item-zone" ><span class="prof-input-error popup__item-error"></span></p>
+                        <button type="submit" class="popup__button">Сохранить</button>
+                    </fieldset>
+                </form> 
+            </div>
+        </div>
+        <div class="popup popup-avatar">            
+            <div class="popup__container">
+                <button class="popup__close-button" type="button"><img class="popup__close-icon" src="../src/images/CloseIcon.svg" alt="Закрывающий крестик"></button>
+                <h2 class="popup__heading">Обновить аватар</h2>
+                <form class="popup__form" name="profile" id="formPlace" novalidate>
+                    <fieldset class="popup__contact">
+                        <input id="email-input" type="url" class="popup__item"  name="prof" placeholder="Ссылка на картинку" value="" required>
+                        <p class="popup__item-zone" ><span class="email-input-error popup__item-error"></span></p>
                         <button type="submit" class="popup__button">Сохранить</button>
                     </fieldset>
                 </form> 

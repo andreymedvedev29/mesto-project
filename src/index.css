@@ -29,6 +29,7 @@
 /*popap*/
 @import url(./blocks/popup/popup.css);
 @import url(./blocks/popup-profile/popup-profile.css);
+@import url(./blocks/popup-avatar/popup-avatar.css);
 @import url(./blocks/popup-place/popup-place.css);
 @import url(./blocks/popup-img/popup-img.css);
 @import url(./blocks/popup-img/__container-img/popup-img__container-img.css);
