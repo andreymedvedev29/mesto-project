@@ -1,4 +1,4 @@
-import { elements, profileTitle, profileSubtitle, profileAvatar } from './data.js'
+import { elements, profileTitle, profileSubtitle, profileAvatarImg } from './data.js'
 import { createCard } from './cards.js'
 
 const config = {
@@ -9,6 +9,8 @@ const config = {
     }
   }
 
+  export let userId
+
   export function userInfo() {
     return fetch(`${config.baseUrl}/users/me`, {
       method: "GET",
@@ -18,7 +20,9 @@ const config = {
     .then((res) => {
         profileTitle.textContent = res.name;
         profileSubtitle.textContent = res.about;
-        /*profileAvatar.src = res.avatar;*/
+        profileAvatarImg.src = res.avatar;
+        userId = res._id;
+        console.log(userId)
     }) 
   } 
 
@@ -36,7 +40,7 @@ const config = {
     });
   } 
 
-  export function editAvatar() {
+  export function editAvatar(avatarValue) {
     return fetch(`${config.baseUrl}/users/me/avatar`, {
       method: 'PATCH',
       headers: {
@@ -44,7 +48,7 @@ const config = {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        avatar: ''
+        avatar: avatarValue
       })
     });
   } 
@@ -66,7 +70,7 @@ const config = {
 
 
 
-export function addCard() {
+export function addCard(placeValue, linkValue) {
   return fetch('https://nomoreparties.co/v1/plus-cohort-6/cards ', {
     method: 'POST',
     headers: {
@@ -74,8 +78,26 @@ export function addCard() {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      name: 'ТЕСТ',
-      link: 'https://cherepah.ru/wp-content/uploads/8/d/4/8d48bd1d7f70578c7130a21fc2411e77.jpg'
+      name: placeValue,
+      link: linkValue
+    })
+  })
+  .then((res) => {
+    console.log(res); 
+  })
+} 
+
+
+export function removeCard(cardId) {
+  return fetch('https://nomoreparties.co/v1/plus-cohort-6/cards ', {
+    method: 'POST',
+    headers: {
+      authorization: '98c6601a-800a-42cb-b9f5-2fd5c4ee4584',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      name: placeValue,
+      link: linkValue
     })
   })
   .then((res) => {
