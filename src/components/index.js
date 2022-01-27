@@ -35,6 +35,7 @@ function handleProfileFormSubmit(evt) {         //функция отправк�
   profileTitle.textContent = nameValue;//добавляем имя на страницу
   profileSubtitle.textContent = jobValue;//добавляем профессию на страницу
   editProfile(nameValue, jobValue);
+  evt.target.reset();
   closePopup(popupProfile);
 }
 profileForm.addEventListener('submit', handleProfileFormSubmit);
@@ -46,6 +47,7 @@ function handlePlaceFormSubmit(evt) {   //функция отправки фор
   const cardElement = createCard(placeValue, linkValue);
   elements.prepend(cardElement);
   addCard(placeValue, linkValue);
+  evt.target.reset();
   closePopup(popupPlace);
 }
 addPlaceForm.addEventListener('submit', handlePlaceFormSubmit);
@@ -55,7 +57,8 @@ function handleAvatarFormSubmit(evt) {   //функция отправки фо�
   evt.preventDefault();
   const avatarValue = avatarInput.value;
   profileAvatarImg.src = avatarValue;
-  editAvatar(avatarValue)
+  editAvatar(avatarValue);
+  evt.target.reset();
   closePopup(popupAvatar);
 }
 addAvatarForm.addEventListener('submit', handleAvatarFormSubmit);
