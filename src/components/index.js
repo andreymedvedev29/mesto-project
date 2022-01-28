@@ -35,6 +35,7 @@ function handleProfileFormSubmit(evt) {         //функция отправк�
   profileTitle.textContent = nameValue;//добавляем имя на страницу
   profileSubtitle.textContent = jobValue;//добавляем профессию на страницу
   editProfile(nameValue, jobValue);
+  saveButton.classList.add('popup__button-activ');
   evt.target.reset();
   closePopup(popupProfile);
 }
@@ -47,6 +48,7 @@ function handlePlaceFormSubmit(evt) {   //функция отправки фор
   const cardElement = createCard(placeValue, linkValue);
   elements.prepend(cardElement);
   addCard(placeValue, linkValue);
+  saveButtonPlace.classList.add('popup__button-activ');
   evt.target.reset();
   closePopup(popupPlace);
 }
@@ -58,6 +60,7 @@ function handleAvatarFormSubmit(evt) {   //функция отправки фо�
   const avatarValue = avatarInput.value;
   profileAvatarImg.src = avatarValue;
   editAvatar(avatarValue);
+  saveButtonAvatar.classList.add('popup__button-activ');
   evt.target.reset();
   closePopup(popupAvatar);
 }
@@ -99,7 +102,10 @@ import { popupProfile,
          closeButtonAvatar,
          avatarInput,
          profileAvatarImg,
-         addAvatarForm
+         addAvatarForm,
+         saveButton,
+         saveButtonPlace,
+         saveButtonAvatar
         } from './data.js'
 
 import {  openPopup, closePopup } from './modal.js'
