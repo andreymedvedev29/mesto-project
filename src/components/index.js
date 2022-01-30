@@ -41,6 +41,17 @@ function handleProfileFormSubmit(evt) {         //функция отправк�
 }
 profileForm.addEventListener('submit', handleProfileFormSubmit);
 
+function handleAvatarFormSubmit(evt) {   //функция отправки формы аватара
+  evt.preventDefault();
+  const avatarValue = avatarInput.value;
+  profileAvatarImg.src = avatarValue;
+  editAvatar(avatarValue);
+  saveButtonAvatar.classList.add('popup__button-activ');
+  evt.target.reset();
+  closePopup(popupAvatar);
+}
+addAvatarForm.addEventListener('submit', handleAvatarFormSubmit);
+
 function handlePlaceFormSubmit(evt) {   //функция отправки формы места
   evt.preventDefault();
   const placeValue = placeInput.value;
@@ -55,16 +66,21 @@ function handlePlaceFormSubmit(evt) {   //функция отправки фор
 addPlaceForm.addEventListener('submit', handlePlaceFormSubmit);
 
 
-function handleAvatarFormSubmit(evt) {   //функция отправки формы аватара
-  evt.preventDefault();
-  const avatarValue = avatarInput.value;
-  profileAvatarImg.src = avatarValue;
-  editAvatar(avatarValue);
-  saveButtonAvatar.classList.add('popup__button-activ');
-  evt.target.reset();
-  closePopup(popupAvatar);
-}
-addAvatarForm.addEventListener('submit', handleAvatarFormSubmit);
+
+
+getAppInfo()
+  .then(([user, cards]) => {
+    profileTitle.textContent = user.name;
+    profileSubtitle.textContent = user.about;
+    profileAvatarImg.src = user.avatar;
+    /*userId = user._id;
+    console.log(userId)*/
+    renderCards(cards);
+    /*cards.forEach((cards) => {
+      elements.append(createCard(cards.name, cards.link))
+    })*/
+  })
+  .catch(err => console.log(err));
 
 
 import '../index.css';
@@ -110,13 +126,13 @@ import { popupProfile,
 
 import {  openPopup, closePopup } from './modal.js'
 
-import { createCard } from './cards.js'
+import { createCard, renderCards, addCard } from './cards.js'
 
-import { userInfo, editAvatar, addCard, getCards, editProfile } from './api.js'
+import { userInfo, editAvatar, getCards, editProfile, getAppInfo } from './api.js'
 
-getCards();
+/*getCards();
 userInfo();
-createCard();
+createCard();*/
 
 
 

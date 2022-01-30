@@ -9,98 +9,73 @@ const config = {
     }
   }
 
-  export let userId
+const getResponseData = (res) => {
+  return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
+};
 
-  export function userInfo() {
-    return fetch(`${config.baseUrl}/users/me`, {
-      method: "GET",
-      headers: config.headers  
-    })
-    .then((res) => res.json())
-    .then((res) => {
-        profileTitle.textContent = res.name;
-        profileSubtitle.textContent = res.about;
-        profileAvatarImg.src = res.avatar;
-        userId = res._id;
-        console.log(userId)
-    }) 
-  } 
+export let userId;
 
-  export function editProfile(nameValue, jobValue) {
-    return fetch(`${config.baseUrl}/users/me`, {
-      method: 'PATCH',
-      headers: {
-        authorization: '98c6601a-800a-42cb-b9f5-2fd5c4ee4584',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        name: nameValue,
-        about: jobValue
-      })
-    });
-  } 
-
-  export function editAvatar(avatarValue) {
-    return fetch(`${config.baseUrl}/users/me/avatar`, {
-      method: 'PATCH',
-      headers: {
-        authorization: '98c6601a-800a-42cb-b9f5-2fd5c4ee4584',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        avatar: avatarValue
-      })
-    });
-  } 
-  
-  export function getCards() {
-    return fetch(`${config.baseUrl}/cards`, {
-      method: "GET",
-      headers: config.headers  
-    })
-    .then((res) => res.json())
-    .then((res) => {
-        res.forEach((cards) => {
-          elements.append(createCard(cards.name, cards.link))
-        }); 
-    });
-  } 
-
-  
-
-
-
-export function addCard(placeValue, linkValue) {
-  return fetch('https://nomoreparties.co/v1/plus-cohort-6/cards ', {
-    method: 'POST',
-    headers: {
-      authorization: '98c6601a-800a-42cb-b9f5-2fd5c4ee4584',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      name: placeValue,
-      link: linkValue
-    })
+export function getUser() {
+  return fetch(`${config.baseUrl}/users/me`, {
+    method: "GET",
+    headers: config.headers
   })
+    .then(res => getResponseData(res));
+  /*.then((res) => res.json())
   .then((res) => {
-    console.log(res); 
-  })
+    /*rofileTitle.textContent = res.name;
+    profileSubtitle.textContent = res.about;
+    profileAvatarImg.src = res.avatar;
+    userId = res._id;
+  }) 
+  .catch((err) => {
+    console.log(err);
+  })*/
 } 
 
+export function getCards() {
+  return fetch(`${config.baseUrl}/cards`, {
+    method: "GET",
+    headers: config.headers
+  })
+    .then(res => getResponseData(res));
+  /*.then((res) => res.json())
+  .then((res) => {
+      res.forEach((cards) => {
+        elements.append(createCard(cards.name, cards.link))
+      });     
+  })
+  .catch((err) => {
+    console.log(err);
+  })*/
+}
 
-export function removeCard(cardId) {
-  return fetch('https://nomoreparties.co/v1/plus-cohort-6/cards ', {
-    method: 'POST',
-    headers: {
-      authorization: '98c6601a-800a-42cb-b9f5-2fd5c4ee4584',
-      'Content-Type': 'application/json'
-    },
+export const getAppInfo = () => {
+  return Promise.all([getUser(), getCards()]);
+};
+
+
+export function editProfile(nameValue, jobValue) {
+  return fetch(`${config.baseUrl}/users/me`, {
+    method: 'PATCH',
+    headers: config.headers,
     body: JSON.stringify({
-      name: placeValue,
-      link: linkValue
+      name: nameValue,
+      about: jobValue
     })
   })
-  .then((res) => {
-    console.log(res); 
-  })
+    .then(res => getResponseData(res));
 } 
+
+export function editAvatar(avatarValue) {
+  return fetch(`${config.baseUrl}/users/me/avatar`, {
+    method: 'PATCH',
+    headers: config.headers,
+    body: JSON.stringify({
+      avatar: avatarValue
+    })
+  })
+    .then(res => getResponseData(res));
+}
+
+export let cardOwnerId
