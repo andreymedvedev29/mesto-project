@@ -56,29 +56,26 @@ function handlePlaceFormSubmit(evt) {   //функция отправки фор
   evt.preventDefault();
   const placeValue = placeInput.value;
   const linkValue = linkInput.value;
-  const cardElement = createCard(placeValue, linkValue);
-  elements.prepend(cardElement);
-  addCard(placeValue, linkValue);
-  saveButtonPlace.classList.add('popup__button-activ');
-  evt.target.reset();
-  closePopup(popupPlace);
+  sendCard(placeValue, linkValue, userId)
+      .then((res) => {
+          addCard(placeValue, linkValue, 0, userId, res._id);
+          saveButtonPlace.classList.add('popup__button-activ');
+          evt.target.reset();
+          closePopup(popupPlace);
+      })
 }
 addPlaceForm.addEventListener('submit', handlePlaceFormSubmit);
 
 
-
+export let userId
 
 getAppInfo()
   .then(([user, cards]) => {
     profileTitle.textContent = user.name;
     profileSubtitle.textContent = user.about;
     profileAvatarImg.src = user.avatar;
-    /*userId = user._id;
-    console.log(userId)*/
+    userId = user._id;
     renderCards(cards);
-    /*cards.forEach((cards) => {
-      elements.append(createCard(cards.name, cards.link))
-    })*/
   })
   .catch(err => console.log(err));
 
@@ -128,11 +125,9 @@ import {  openPopup, closePopup } from './modal.js'
 
 import { createCard, renderCards, addCard } from './cards.js'
 
-import { userInfo, editAvatar, getCards, editProfile, getAppInfo } from './api.js'
+import { userInfo, editAvatar, getCards, editProfile, getAppInfo, sendCard } from './api.js'
 
-/*getCards();
-userInfo();
-createCard();*/
+
 
 
 

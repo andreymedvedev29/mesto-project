@@ -1,4 +1,5 @@
 .elements__close-button {
+    visibility: hidden;
     width: 18px;
     height: 19.3px;
     background-color: rgb(255, 255, 255, 0);

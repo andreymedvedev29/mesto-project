@@ -21,16 +21,6 @@ export function getUser() {
     headers: config.headers
   })
     .then(res => getResponseData(res));
-  /*.then((res) => res.json())
-  .then((res) => {
-    /*rofileTitle.textContent = res.name;
-    profileSubtitle.textContent = res.about;
-    profileAvatarImg.src = res.avatar;
-    userId = res._id;
-  }) 
-  .catch((err) => {
-    console.log(err);
-  })*/
 } 
 
 export function getCards() {
@@ -39,15 +29,6 @@ export function getCards() {
     headers: config.headers
   })
     .then(res => getResponseData(res));
-  /*.then((res) => res.json())
-  .then((res) => {
-      res.forEach((cards) => {
-        elements.append(createCard(cards.name, cards.link))
-      });     
-  })
-  .catch((err) => {
-    console.log(err);
-  })*/
 }
 
 export const getAppInfo = () => {
@@ -78,4 +59,29 @@ export function editAvatar(avatarValue) {
     .then(res => getResponseData(res));
 }
 
-export let cardOwnerId
+export function sendCard(placeValue, linkValue, userId) {
+  return fetch('https://nomoreparties.co/v1/plus-cohort-6/cards ', {
+    method: 'POST',
+    headers: config.headers,
+    body: JSON.stringify({
+      name: placeValue,
+      link: linkValue,
+      _id: userId
+    })
+  })
+    .then(res => getResponseData(res));
+}  
+ 
+
+export function deleteCard(cardId) {
+  return fetch('https://nomoreparties.co/v1/cohortId/cards/cardId', {
+    method: 'DELETE',
+    headers: config.headers,
+    body: JSON.stringify({
+      _id: cardId
+    })
+  })
+  .then(res => getResponseData(res));
+}  
+
+

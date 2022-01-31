@@ -1,7 +1,7 @@
 
 import { imgPopupImg, titlePopupImg, popupImg, elements } from './data.js'
 import { openPopup } from './modal.js'
-import { closeButtonBasket } from './data.js'
+import { userId } from './index.js'
 
 export const renderCards = (arr) => {
   arr.reverse().forEach(item => {
@@ -20,6 +20,7 @@ export function createCard(cardTitle, cardImage, initialLikes, cardOwner, cardId
     const imageElement = cardElement.querySelector('.elements__image');
     const likeElement = cardElement.querySelector('.elements__group-icon');
     const likeCounterElement = cardElement.querySelector('.elements__group-likes');
+    const closeButtonBasket = cardElement.querySelector('.elements__close-button');//находим кнопку корзинка
     cardElement.owner = cardOwner;
     cardElement.id = cardId;
     likeCounterElement.textContent = initialLikes.length;
@@ -36,9 +37,9 @@ export function createCard(cardTitle, cardImage, initialLikes, cardOwner, cardId
   });
 
   
-/*if (cardOwner !== userId) {
+if (userId == cardOwner) {
   closeButtonBasket.classList.add('elements__close-button_opened');
-};*/
+};
 
 
   /*const likeElement = cardElement.querySelector('.elements__group-icon');
@@ -68,7 +69,6 @@ export function createCard(cardTitle, cardImage, initialLikes, cardOwner, cardId
       
       openPopup(popupImg);
   });
-  
     return cardElement;
   };
 

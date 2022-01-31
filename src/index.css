@@ -25,6 +25,7 @@
 @import url(./blocks/elements/__group-title/elements__group-title.css);
 @import url(./blocks/elements/__group-icon/_activ/elements__group-icon_activ.css);
 @import url(./blocks/elements/__close-button/elements__close-button.css);
+@import url(./blocks/elements/__close-button/_opened/elements__close-button_opened.css);
 /*footer*/
 @import url(./blocks/footer/footer.css);
 @import url(./blocks/footer/__copyright/footer__copyright.css);

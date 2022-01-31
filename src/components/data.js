@@ -27,4 +27,3 @@ export const saveButtonAvatar = popupAvatar.querySelector('.popup__button');//н
 export const placeInput = document.getElementById('place-input');//находим поле ввода названия места
 export const linkInput = document.getElementById('email-input');// находим поле ввода ссылки
 export const closeButtonImg = popupImg.querySelector('.popup__close-button');//находим кнопку закрытия попапа картинки
-export const closeButtonBasket = document.querySelector('.elements__close-button');//находим кнопку корзинка
