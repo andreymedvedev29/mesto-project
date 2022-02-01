@@ -27,27 +27,34 @@ closeButtonImg.addEventListener('click', function () {
   closePopup(popupImg);
 });
 
-function handleProfileFormSubmit(evt) {     
+function handleProfileFormSubmit(evt) {    
   evt.preventDefault(); 
-  const nameValue = nameInput.value;
-  const jobValue = jobInput.value;
-  profileTitle.textContent = nameValue;
-  profileSubtitle.textContent = jobValue;
-  editProfile(nameValue, jobValue);
-  saveButton.classList.add('popup__button-activ');
-  evt.target.reset();
-  closePopup(popupProfile);
+  editProfile(nameInput.value, jobInput.value)
+    .then(() => {
+      profileTitle.textContent = nameInput.value;
+      profileSubtitle.textContent = jobInput.value;
+      saveButton.classList.add('popup__button-activ');
+      evt.target.reset();
+      closePopup(popupProfile);   
+    })
+    .catch((err) => {
+      console.log(err)
+    })  
 }
 profileForm.addEventListener('submit', handleProfileFormSubmit);
 
 function handleAvatarFormSubmit(evt) { 
   evt.preventDefault();
-  const avatarValue = avatarInput.value;
-  profileAvatarImg.src = avatarValue;
-  editAvatar(avatarValue);
-  saveButtonAvatar.classList.add('popup__button-activ');
-  evt.target.reset();
-  closePopup(popupAvatar);
+  editAvatar(avatarInput.value)
+      .then(() => {
+        profileAvatarImg.src = avatarInput.value;  
+        saveButtonAvatar.classList.add('popup__button-activ');
+        evt.target.reset();
+        closePopup(popupAvatar);
+      })
+      .catch((err) => {
+        console.log(err)
+      })    
 }
 addAvatarForm.addEventListener('submit', handleAvatarFormSubmit);
 
