@@ -1,4 +1,4 @@
-// Вынесем все необходимые элементы формы в константы
+
 const form = document.querySelector('.popup__form');
 const formInput = form.querySelector('.popup__item');
 const formError = form.querySelector(`.${formInput.id}-error`); 
@@ -28,41 +28,32 @@ const checkInputValidity = (formElement, inputElement) => {
   }
 };
 
-//Функция ищет хлтя бы одно невалидное поле
 const hasInvalidInput = (inputList) => {
   return inputList.some((inputElement) => {
     return !inputElement.validity.valid;
   })
 };
 
-//Функция переключения кнопки актив/неактив
 const toggleButtonState = (inputList, buttonElement) => {
-  // Если есть хотя бы один невалидный инпут
   if (hasInvalidInput(inputList)) {
-    // сделай кнопку неактивной
     buttonElement.classList.add('popup__button-activ');
   } else {
-        // иначе сделай кнопку активной
     buttonElement.classList.remove('popup__button-activ');
   }
 };
 
-//Функция добавляет слушателя всем полям внутри формы
 const setEventListeners = (formElement) => {
   const inputList = Array.from(formElement.querySelectorAll('.popup__item'));
   const buttonElement = formElement.querySelector('.popup__button');
-  // чтобы проверить состояние кнопки в самом начале
   toggleButtonState(inputList, buttonElement);
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', function () {
       checkInputValidity(formElement, inputElement);
-      // чтобы проверять его при изменении любого из полей
       toggleButtonState(inputList, buttonElement);
     });
   });
 };
 
-//Функция добавляет обработчик  всем формам
 export const enableValidation = () => {
   const formList = Array.from(document.querySelectorAll('.popup__form'));
   formList.forEach((formElement) => {

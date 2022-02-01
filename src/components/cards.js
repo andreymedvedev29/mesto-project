@@ -16,12 +16,12 @@ export const renderCards = (arr) => {
 }
 
 export function createCard(cardTitle, cardImage, initialLikes, cardOwner, cardId) {
-  const cardTemplate = document.querySelector('#place-template').content;//находим шаблон
-  const cardElement = cardTemplate.querySelector('.elements__element').cloneNode(true);//клонируем шаблон
+  const cardTemplate = document.querySelector('#place-template').content;
+  const cardElement = cardTemplate.querySelector('.elements__element').cloneNode(true);
   const imageElement = cardElement.querySelector('.elements__image');
   const initialLikeHeart = cardElement.querySelector('.elements__group-icon');
   const likeCounterElement = cardElement.querySelector('.elements__group-likes');
-  const closeButtonBasket = cardElement.querySelector('.elements__close-button');//находим кнопку корзинка
+  const closeButtonBasket = cardElement.querySelector('.elements__close-button');
   cardElement.owner = cardOwner;
   cardElement.id = cardId;
   likeCounterElement.textContent = initialLikes.length;
@@ -43,14 +43,12 @@ export function createCard(cardTitle, cardImage, initialLikes, cardOwner, cardId
   if (userId == cardOwner) {
     closeButtonBasket.classList.add('elements__close-button_opened');
   };
-
   cardElement.querySelector('.elements__close-button').addEventListener('click', deleting)
 
-  imageElement.addEventListener('click', function () {//функция открытия попапа с картинкой
+  imageElement.addEventListener('click', function () {
     imgPopupImg.src = cardImage;
     imgPopupImg.alt = cardTitle;
     titlePopupImg.textContent = cardTitle;
-
     openPopup(popupImg);
   });
   return cardElement;
@@ -63,9 +61,9 @@ export const addCard = (cardTitle, cardImage, initialLikes, cardOwner, cardId) =
 
 const addLike = (evt) => {
   const likeHeart = evt.target;
-  const likesContainer = likeHeart.closest(".elements__group-block");
+  const likesBlock = likeHeart.closest(".elements__group-block");
   const currentCard = likeHeart.closest(".elements__element");
-  const likeCount = likesContainer.querySelector(".elements__group-likes");
+  const likeCount = likesBlock.querySelector(".elements__group-likes");
   const cardId = currentCard.id;
 
   if (!likeHeart.classList.contains("elements__group-icon_activ")) {
@@ -89,16 +87,15 @@ const addLike = (evt) => {
   }
 };
 
-
-let deletingItem;
+let delItem;
 
 function deleting(evt) {
 const basket = evt.target; 
-deletingItem = basket.closest(".elements__element");
-const deletingItemId = deletingItem.id;
+delItem = basket.closest(".elements__element");
+const deletingItemId = delItem.id;
 deleteCard(deletingItemId)
     .then(() => {
-        deletingItem.remove();
+        delItem.remove();
     })
     .catch((err) => {
         console.log(err);

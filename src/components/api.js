@@ -1,5 +1,3 @@
-import { elements, profileTitle, profileSubtitle, profileAvatarImg } from './data.js'
-import { createCard } from './cards.js'
 
 const config = {
     baseUrl: 'https://nomoreparties.co/v1/plus-cohort-6',

@@ -101,8 +101,7 @@ import { popupProfile,
          nameInput, 
          jobInput, 
          addButton, 
-         closeButtonPlace, 
-         elements, 
+         closeButtonPlace,  
          addPlaceForm, 
          placeInput, 
          linkInput, 
@@ -119,9 +118,9 @@ import { popupProfile,
 
 import {  openPopup, closePopup } from './modal.js'
 
-import { createCard, renderCards, addCard } from './cards.js'
+import { renderCards, addCard } from './cards.js'
 
-import { userInfo, editAvatar, getCards, editProfile, getAppInfo, sendCard } from './api.js'
+import { editAvatar, editProfile, getAppInfo, sendCard } from './api.js'
 
 
 
