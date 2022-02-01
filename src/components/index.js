@@ -1,26 +1,25 @@
-
-editButton.addEventListener('click', function () {                //на кнопку редактирования профиля вешаем функцию открытия попапа            
+editButton.addEventListener('click', function () {              
   openPopup(popupProfile);
 });
 
-closeProfileButton.addEventListener('click', function () {               //на кнопку закрытия профиля вешаем функцию закрытия попапа
+closeProfileButton.addEventListener('click', function () {               
   closePopup(popupProfile);
 });
 
-profileAvatar.addEventListener('click', function () {//функция открытия попапа с аватаром
+profileAvatar.addEventListener('click', function () {
   openPopup(popupAvatar);
 });
 
-closeButtonAvatar.addEventListener('click', function () {//на кнопку закрытия аватара вешаем функцию закрытия попапа
+closeButtonAvatar.addEventListener('click', function () {
   closePopup(popupAvatar);
 });
 
-addButton.addEventListener('click', function () { //на кнопку открытия попапа место вешаем функцию открытия попапа
-  document.getElementById('formPlace').reset();//очищаем форму
+addButton.addEventListener('click', function () { 
+  document.getElementById('formPlace').reset();
   openPopup(popupPlace);
 });
 
-closeButtonPlace.addEventListener('click', function () {//на кнопку закрытия попапа место вешаем функцию закрытия попапа
+closeButtonPlace.addEventListener('click', function () {
   closePopup(popupPlace);
 });
 
@@ -28,12 +27,12 @@ closeButtonImg.addEventListener('click', function () {
   closePopup(popupImg);
 });
 
-function handleProfileFormSubmit(evt) {         //функция отправки формы профиля
+function handleProfileFormSubmit(evt) {     
   evt.preventDefault(); 
-  const nameValue = nameInput.value;//в переменную сохраняем данные поля ввода имени
-  const jobValue = jobInput.value;//в переменную сохраняем данные поля ввода профессии
-  profileTitle.textContent = nameValue;//добавляем имя на страницу
-  profileSubtitle.textContent = jobValue;//добавляем профессию на страницу
+  const nameValue = nameInput.value;
+  const jobValue = jobInput.value;
+  profileTitle.textContent = nameValue;
+  profileSubtitle.textContent = jobValue;
   editProfile(nameValue, jobValue);
   saveButton.classList.add('popup__button-activ');
   evt.target.reset();
@@ -41,7 +40,7 @@ function handleProfileFormSubmit(evt) {         //функция отправк�
 }
 profileForm.addEventListener('submit', handleProfileFormSubmit);
 
-function handleAvatarFormSubmit(evt) {   //функция отправки формы аватара
+function handleAvatarFormSubmit(evt) { 
   evt.preventDefault();
   const avatarValue = avatarInput.value;
   profileAvatarImg.src = avatarValue;
@@ -52,7 +51,7 @@ function handleAvatarFormSubmit(evt) {   //функция отправки фо�
 }
 addAvatarForm.addEventListener('submit', handleAvatarFormSubmit);
 
-function handlePlaceFormSubmit(evt) {   //функция отправки формы места
+function handlePlaceFormSubmit(evt) {  
   evt.preventDefault();
   const placeValue = placeInput.value;
   const linkValue = linkInput.value;
@@ -66,8 +65,7 @@ function handlePlaceFormSubmit(evt) {   //функция отправки фор
 }
 addPlaceForm.addEventListener('submit', handlePlaceFormSubmit);
 
-
-export let userId
+export let userId;
 
 getAppInfo()
   .then(([user, cards]) => {
@@ -78,7 +76,6 @@ getAppInfo()
     renderCards(cards);
   })
   .catch(err => console.log(err));
-
 
 import '../index.css';
 
@@ -91,7 +88,6 @@ enableValidation({
   inputErrorClass: 'popup__item-error',
   errorClass: 'popup__item_type_error'
 }); 
-
 
 import { popupProfile,
          popupPlace,

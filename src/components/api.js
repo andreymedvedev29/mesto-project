@@ -13,8 +13,6 @@ const getResponseData = (res) => {
   return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
 };
 
-export let userId;
-
 export function getUser() {
   return fetch(`${config.baseUrl}/users/me`, {
     method: "GET",
@@ -72,9 +70,8 @@ export function sendCard(placeValue, linkValue, userId) {
     .then(res => getResponseData(res));
 }  
  
-
 export function deleteCard(cardId) {
-  return fetch('https://nomoreparties.co/v1/cohortId/cards/cardId', {
+  return fetch('https://nomoreparties.co/v1/plus-cohort-6/cards/' + `${cardId}`, {
     method: 'DELETE',
     headers: config.headers,
     body: JSON.stringify({
@@ -84,4 +81,25 @@ export function deleteCard(cardId) {
   .then(res => getResponseData(res));
 }  
 
+export function sendLike(cardId) {
+  return fetch('https://nomoreparties.co/v1/plus-cohort-6/cards/likes/' + `${cardId}`, {
+    method: 'PUT',
+    headers: config.headers,
+    body: JSON.stringify({
+      _id: cardId
+    })
+  })
+  .then(res => getResponseData(res));
+} 
+
+export function deleteLike(cardId) {
+  return fetch('https://nomoreparties.co/v1/plus-cohort-6/cards/likes/' + `${cardId}`, {
+    method: 'DELETE',
+    headers: config.headers,
+    body: JSON.stringify({
+      _id: cardId
+    })
+  })
+  .then(res => getResponseData(res));
+}  
 
