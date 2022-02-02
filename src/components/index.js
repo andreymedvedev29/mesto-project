@@ -29,6 +29,7 @@ closeButtonImg.addEventListener('click', function () {
 
 function handleProfileFormSubmit(evt) {    
   evt.preventDefault(); 
+  renderLoading(true, saveButton);
   editProfile(nameInput.value, jobInput.value)
     .then(() => {
       profileTitle.textContent = nameInput.value;
@@ -39,12 +40,16 @@ function handleProfileFormSubmit(evt) {
     })
     .catch((err) => {
       console.log(err)
-    })  
+    }) 
+    .finally(() => {
+      renderLoading(false, saveButton);
+    });
 }
 profileForm.addEventListener('submit', handleProfileFormSubmit);
 
 function handleAvatarFormSubmit(evt) { 
   evt.preventDefault();
+  renderLoading(true, saveButtonAvatar);
   editAvatar(avatarInput.value)
       .then(() => {
         profileAvatarImg.src = avatarInput.value;  
@@ -54,12 +59,16 @@ function handleAvatarFormSubmit(evt) {
       })
       .catch((err) => {
         console.log(err)
-      })    
+      }) 
+      .finally(() => {
+        renderLoading(false, saveButtonAvatar);
+      });
 }
 addAvatarForm.addEventListener('submit', handleAvatarFormSubmit);
 
 function handlePlaceFormSubmit(evt) {  
   evt.preventDefault();
+  renderLoading(true, saveButtonPlace);
   const placeValue = placeInput.value;
   const linkValue = linkInput.value;
   sendCard(placeValue, linkValue, userId)
@@ -69,6 +78,9 @@ function handlePlaceFormSubmit(evt) {
           evt.target.reset();
           closePopup(popupPlace);
       })
+      .finally(() => {
+        renderLoading(false, saveButtonPlace);
+      });
 }
 addPlaceForm.addEventListener('submit', handlePlaceFormSubmit);
 
@@ -128,6 +140,7 @@ import {  openPopup, closePopup } from './modal.js'
 import { renderCards, addCard } from './cards.js'
 
 import { editAvatar, editProfile, getAppInfo, sendCard } from './api.js'
+import { renderLoading } from './utils.js'
 
 
 
