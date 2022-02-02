@@ -1,22 +1,26 @@
-
-export function openPopup(popupElement) {             //функции открытия попапов
+// функции открытия попапов
+export function openPopup(popupElement) {             
   popupElement.classList.add('popup_opened');
+  window.addEventListener("keydown", closeByEscape);
 };
 
-export function closePopup(popupElement) {            //функции закрытия попапов
+// функции закрытия попапов
+export function closePopup(popupElement) {            
   popupElement.classList.remove('popup_opened');
+  window.removeEventListener("keydown", closeByEscape);
 };
 
-document.addEventListener('keydown', function (evt) {       //закрываем попапы клавишей Esc
-  
-  if (evt.key === 'Escape') {
-    const escButton = document.querySelector('.popup_opened');
-    closePopup(escButton);
+// функции закрытия попапов клавишей Esc
+function closeByEscape(evt) {   
+  if (evt.key === "Escape") {
+      const closedPopup = document.querySelector(".popup_opened");
+      closePopup(closedPopup);
   }
-}); 
+}
 
-document.addEventListener('click', function (evt) {        //закрываем попапы кликом по оверлею
+// Закрываем попапы кликом по оверлею
+document.addEventListener('click', function (evt) {        
   if (evt.target.classList.contains('popup_opened')) {
-    closePopup(evt.target);
+    closePopup(evt.target)
   }
 }); 

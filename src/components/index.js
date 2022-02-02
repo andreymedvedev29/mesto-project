@@ -1,3 +1,49 @@
+import '../index.css';
+
+import { enableValidation } from './validate.js'
+enableValidation({
+  formSelector: '.popup__form',
+  inputSelector: '.popup__item',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button-activ',
+  inputErrorClass: 'popup__item-error',
+  errorClass: 'popup__item_type_error'
+}); 
+
+import { popupProfile,
+         popupPlace,
+         popupImg, 
+         popupAvatar,
+         editButton, 
+         closeProfileButton, 
+         profileTitle, 
+         profileSubtitle,
+         profileForm, 
+         nameInput, 
+         jobInput, 
+         addButton, 
+         closeButtonPlace,  
+         addPlaceForm, 
+         placeInput, 
+         linkInput, 
+         closeButtonImg,
+         profileAvatar,
+         closeButtonAvatar,
+         avatarInput,
+         profileAvatarImg,
+         addAvatarForm,
+         saveButton,
+         saveButtonPlace,
+         saveButtonAvatar
+        } from './data.js'
+
+import {  openPopup, closePopup } from './modal.js'
+
+import { renderCards, addCard } from './cards.js'
+
+import { editAvatar, editProfile, getAppInfo, sendCard } from './api.js'
+import { renderLoading } from './utils.js'
+
 editButton.addEventListener('click', function () {              
   openPopup(popupProfile);
 });
@@ -96,51 +142,7 @@ getAppInfo()
   })
   .catch(err => console.log(err));
 
-import '../index.css';
 
-import { enableValidation } from './validate.js'
-enableValidation({
-  formSelector: '.popup__form',
-  inputSelector: '.popup__item',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__button-activ',
-  inputErrorClass: 'popup__item-error',
-  errorClass: 'popup__item_type_error'
-}); 
-
-import { popupProfile,
-         popupPlace,
-         popupImg, 
-         popupAvatar,
-         editButton, 
-         closeProfileButton, 
-         profileTitle, 
-         profileSubtitle,
-         profileForm, 
-         nameInput, 
-         jobInput, 
-         addButton, 
-         closeButtonPlace,  
-         addPlaceForm, 
-         placeInput, 
-         linkInput, 
-         closeButtonImg,
-         profileAvatar,
-         closeButtonAvatar,
-         avatarInput,
-         profileAvatarImg,
-         addAvatarForm,
-         saveButton,
-         saveButtonPlace,
-         saveButtonAvatar
-        } from './data.js'
-
-import {  openPopup, closePopup } from './modal.js'
-
-import { renderCards, addCard } from './cards.js'
-
-import { editAvatar, editProfile, getAppInfo, sendCard } from './api.js'
-import { renderLoading } from './utils.js'
 
 
 
