@@ -26,4 +26,4 @@
 
 #### GitHub Pages
 
-https://andreymedvedev29.github.io/mesto-project/index.html
+https://andreymedvedev29.github.io/mesto-project/
