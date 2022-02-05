@@ -52,13 +52,13 @@ const setEventListeners = (formElement) => {
   });
 };
 
-export const enableValidation = () => {
+export const enableValidation = (settings) => {
   const formList = Array.from(document.querySelectorAll(settings.popupForm));
   formList.forEach((formElement) => {
     formElement.addEventListener('submit', function (evt) {
       evt.preventDefault();
     });
-    setEventListeners(formElement)
+    setEventListeners(formElement, settings)
   });
 };
 
