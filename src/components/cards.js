@@ -21,7 +21,7 @@ export function createCard(cardTitle, cardImage, initialLikes, cardOwner, cardId
   const imageElement = cardElement.querySelector('.elements__image');
   const initialLikeHeart = cardElement.querySelector('.elements__group-icon');
   const likeCounterElement = cardElement.querySelector('.elements__group-likes');
-  const closeButtonBasket = cardElement.querySelector('.elements__close-button');
+  const deleteButtonBasket = cardElement.querySelector('.elements__close-button');
   cardElement.owner = cardOwner;
   cardElement.id = cardId;
   likeCounterElement.textContent = initialLikes.length;
@@ -38,12 +38,14 @@ export function createCard(cardTitle, cardImage, initialLikes, cardOwner, cardId
   } else {
     likeCounterElement.textContent = 0;
   }
-  cardElement.querySelector(".elements__group-icon").addEventListener("click", addLike);
+  //cardElement.querySelector(".elements__group-icon").addEventListener("click", addLike);
+  cardElement.addEventListener("click", addLike);
 
   if (userId == cardOwner) {
-    closeButtonBasket.classList.add('elements__close-button_opened');
+    deleteButtonBasket.classList.add('elements__close-button_opened');
   };
-  cardElement.querySelector('.elements__close-button').addEventListener('click', deleting)
+  //cardElement.querySelector('.elements__close-button').addEventListener('click', deleting)
+  cardElement.addEventListener('click', deleting);
 
   imageElement.addEventListener('click', function () {
     imgPopupImg.src = cardImage;

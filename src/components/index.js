@@ -1,14 +1,6 @@
 import '../index.css';
 
 import { enableValidation } from './validate.js'
-enableValidation({
-  formSelector: '.popup__form',
-  inputSelector: '.popup__item',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__button-activ',
-  inputErrorClass: 'popup__item-error',
-  errorClass: 'popup__item_type_error'
-}); 
 
 import { popupProfile,
          popupPlace,
@@ -32,7 +24,7 @@ import { popupProfile,
          avatarInput,
          profileAvatarImg,
          addAvatarForm,
-         saveButton,
+         profileSubmitButton,
          saveButtonPlace,
          saveButtonAvatar
         } from './data.js'
@@ -42,10 +34,15 @@ import {  openPopup, closePopup } from './modal.js'
 import { renderCards, addCard } from './cards.js'
 
 import { editAvatar, editProfile, getAppInfo, sendCard } from './api.js'
+
 import { renderLoading } from './utils.js'
 
-editButton.addEventListener('click', function () {              
-  openPopup(popupProfile);
+import { settings } from './validate.js'
+
+editButton.addEventListener('click', function () { 
+  nameInput.value = profileTitle.textContent;
+  jobInput.value = profileSubtitle.textContent;
+  openPopup(popupProfile);      
 });
 
 closeProfileButton.addEventListener('click', function () {               
@@ -61,7 +58,6 @@ closeButtonAvatar.addEventListener('click', function () {
 });
 
 addButton.addEventListener('click', function () { 
-  document.getElementById('formPlace').reset();
   openPopup(popupPlace);
 });
 
@@ -75,20 +71,18 @@ closeButtonImg.addEventListener('click', function () {
 
 function handleProfileFormSubmit(evt) {    
   evt.preventDefault(); 
-  renderLoading(true, saveButton);
+  renderLoading(true, profileSubmitButton);
   editProfile(nameInput.value, jobInput.value)
     .then(() => {
       profileTitle.textContent = nameInput.value;
       profileSubtitle.textContent = jobInput.value;
-      saveButton.classList.add('popup__button-activ');
-      evt.target.reset();
       closePopup(popupProfile);   
     })
     .catch((err) => {
       console.log(err)
     }) 
     .finally(() => {
-      renderLoading(false, saveButton);
+      renderLoading(false, profileSubmitButton);
     });
 }
 profileForm.addEventListener('submit', handleProfileFormSubmit);
@@ -99,7 +93,7 @@ function handleAvatarFormSubmit(evt) {
   editAvatar(avatarInput.value)
       .then(() => {
         profileAvatarImg.src = avatarInput.value;  
-        saveButtonAvatar.classList.add('popup__button-activ');
+        disabledButton(saveButtonAvatar);
         evt.target.reset();
         closePopup(popupAvatar);
       })
@@ -120,7 +114,7 @@ function handlePlaceFormSubmit(evt) {
   sendCard(placeValue, linkValue, userId)
       .then((res) => {
           addCard(placeValue, linkValue, 0, userId, res._id);
-          saveButtonPlace.classList.add('popup__button-activ');
+          disabledButton(saveButtonPlace);
           evt.target.reset();
           closePopup(popupPlace);
       })
@@ -141,6 +135,13 @@ getAppInfo()
     renderCards(cards);
   })
   .catch(err => console.log(err));
+
+  function disabledButton(button) {
+    button.classList.add('popup__button-activ');
+    button.setAttribute("disabled", true);
+  }
+
+  enableValidation(settings); 
 
 
 

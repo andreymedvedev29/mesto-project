@@ -56,7 +56,7 @@ export function editAvatar(avatarValue) {
 }
 
 export function sendCard(placeValue, linkValue, userId) {
-  return fetch('https://nomoreparties.co/v1/plus-cohort-6/cards ', {
+  return fetch(`${config.baseUrl}/cards`, {
     method: 'POST',
     headers: config.headers,
     body: JSON.stringify({
@@ -69,7 +69,7 @@ export function sendCard(placeValue, linkValue, userId) {
 }  
  
 export function deleteCard(cardId) {
-  return fetch('https://nomoreparties.co/v1/plus-cohort-6/cards/' + `${cardId}`, {
+  return fetch(`${config.baseUrl}/cards/` + `${cardId}`, {
     method: 'DELETE',
     headers: config.headers,
     body: JSON.stringify({
@@ -80,7 +80,7 @@ export function deleteCard(cardId) {
 }  
 
 export function sendLike(cardId) {
-  return fetch('https://nomoreparties.co/v1/plus-cohort-6/cards/likes/' + `${cardId}`, {
+  return fetch(`${config.baseUrl}/cards/likes/` + `${cardId}`, {
     method: 'PUT',
     headers: config.headers,
     body: JSON.stringify({
@@ -91,7 +91,7 @@ export function sendLike(cardId) {
 } 
 
 export function deleteLike(cardId) {
-  return fetch('https://nomoreparties.co/v1/plus-cohort-6/cards/likes/' + `${cardId}`, {
+  return fetch(`${config.baseUrl}/cards/likes/` + `${cardId}`, {
     method: 'DELETE',
     headers: config.headers,
     body: JSON.stringify({

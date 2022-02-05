@@ -19,8 +19,12 @@ function closeByEscape(evt) {
 }
 
 // Закрываем попапы кликом по оверлею
-document.addEventListener('click', function (evt) {        
-  if (evt.target.classList.contains('popup_opened')) {
-    closePopup(evt.target)
-  }
-}); 
+const popups = document.querySelectorAll('.popup')
+
+popups.forEach((popup) => {
+  popup.addEventListener('mousedown', (evt) => {
+    if (evt.target.classList.contains('popup_opened')) {
+      closePopup(popup)
+    }
+  })
+})
