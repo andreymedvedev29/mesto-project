@@ -39,13 +39,13 @@ export function createCard(cardTitle, cardImage, initialLikes, cardOwner, cardId
     likeCounterElement.textContent = 0;
   }
   //cardElement.querySelector(".elements__group-icon").addEventListener("click", addLike);
-  cardElement.addEventListener("click", addLike);
+  initialLikeHeart.addEventListener("click", addLike);
 
   if (userId == cardOwner) {
     deleteButtonBasket.classList.add('elements__close-button_opened');
   };
   //cardElement.querySelector('.elements__close-button').addEventListener('click', deleting)
-  cardElement.addEventListener('click', deleting);
+  deleteButtonBasket.addEventListener('click', deleting);
 
   imageElement.addEventListener('click', function () {
     imgPopupImg.src = cardImage;

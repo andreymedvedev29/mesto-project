@@ -69,7 +69,7 @@ export function sendCard(placeValue, linkValue, userId) {
 }  
  
 export function deleteCard(cardId) {
-  return fetch(`${config.baseUrl}/cards/` + `${cardId}`, {
+  return fetch('https://nomoreparties.co/v1/plus-cohort-6/cards/' + `${cardId}`, {
     method: 'DELETE',
     headers: config.headers,
     body: JSON.stringify({
