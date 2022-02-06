@@ -1,6 +1,6 @@
 
 // Функция, которая добавляет класс с ошибкой
-const showInputError = (formElement, inputElement, errorMessage) => {
+const showInputError = (formElement, inputElement, errorMessage, settings) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.add(settings.popupError);
   errorElement.textContent = errorMessage;
@@ -8,7 +8,7 @@ const showInputError = (formElement, inputElement, errorMessage) => {
 };
 
 // Функция, которая удаляет класс с ошибкой
-const hideInputError = (formElement, inputElement) => {
+const hideInputError = (formElement, inputElement, settings) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.remove(settings.popupError);
   errorElement.classList.remove(settings.popupFieldSet);
@@ -16,11 +16,11 @@ const hideInputError = (formElement, inputElement) => {
 };
 
 //Функция валидации полей
-const checkInputValidity = (formElement, inputElement) => {
+const checkInputValidity = (formElement, inputElement, settings) => {
   if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage);
+    showInputError(formElement, inputElement, inputElement.validationMessage, settings);
   } else {
-    hideInputError(formElement, inputElement);
+    hideInputError(formElement, inputElement, settings);
   }
 };
 
@@ -30,7 +30,7 @@ const hasInvalidInput = (inputList) => {
   })
 };
 
-const toggleButtonState = (inputList, buttonElement) => {
+const toggleButtonState = (inputList, buttonElement, settings) => {
   if (hasInvalidInput(inputList)) {
     buttonElement.classList.add(settings.popupButtonDisabled);
     buttonElement.disabled = true;
@@ -40,14 +40,14 @@ const toggleButtonState = (inputList, buttonElement) => {
   }
 };
 
-const setEventListeners = (formElement) => {
+const setEventListeners = (formElement, settings) => {
   const inputList = Array.from(formElement.querySelectorAll(settings.popupInput));
   const buttonElement = formElement.querySelector(settings.popupButton);
-  toggleButtonState(inputList, buttonElement);
+  toggleButtonState(inputList, buttonElement, settings);
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', function () {
-      checkInputValidity(formElement, inputElement);
-      toggleButtonState(inputList, buttonElement);
+      checkInputValidity(formElement, inputElement, settings);
+      toggleButtonState(inputList, buttonElement, settings);
     });
   });
 };
